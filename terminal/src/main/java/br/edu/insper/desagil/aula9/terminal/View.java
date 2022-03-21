@@ -2,6 +2,8 @@ package br.edu.insper.desagil.aula9.terminal;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,8 +12,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
-public class View extends JPanel {
+public class View extends JPanel implements DocumentListener, ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	private JTextArea area;
@@ -65,7 +69,7 @@ public class View extends JPanel {
 
 		updateLabel();
 	}
-
+	
 	private void updateArea() {
 		String text = this.field.getText();
 		if (!text.isBlank()) {
@@ -77,5 +81,30 @@ public class View extends JPanel {
 	private void updateLabel() {
 		int count = this.field.getText().length();
 		this.label.setText(Integer.toString(count));
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		updateArea();
+		
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		updateLabel();
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		updateLabel();
+	}
+
+	@Override
+	public void changedUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		updateLabel();
 	}
 }
