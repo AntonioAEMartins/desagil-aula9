@@ -12,7 +12,10 @@ public class ManagerTest {
 		BancoDeDados bd = new BancoDeDados(log);
 		InterfaceGrafica gui = new InterfaceGrafica(log);
 		ServidorOnline api = new ServidorOnline(log);
-		Manager manager = new Manager(bd, gui, api);
+		Manager manager = new Manager();
+		manager.addGerenciador(bd);
+		manager.addGerenciador(gui);
+		manager.addGerenciador(api);
 		Report report = new Report("Balanço Financeiro");
 
 		manager.finish(report);

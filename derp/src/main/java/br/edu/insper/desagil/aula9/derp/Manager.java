@@ -1,19 +1,23 @@
 package br.edu.insper.desagil.aula9.derp;
 
-public class Manager {
-	private BancoDeDados bd;
-	private InterfaceGrafica gui;
-	private ServidorOnline api;
+import java.util.ArrayList;
+import java.util.List;
 
-	public Manager(BancoDeDados bd, InterfaceGrafica gui, ServidorOnline api) {
-		this.bd = bd;
-		this.gui = gui;
-		this.api = api;
+public class Manager {
+	private List<Gerenciador> manipuladores;
+	
+	public Manager() {
+		// TODO Auto-generated constructor stub
+		this.manipuladores = new ArrayList<>();
 	}
 
-	public void finish(Report report) {
-		bd.save(report);
-		gui.show(report);
-		api.notify(report);
+	public void addGerenciador(Gerenciador manipulador) {
+		this.manipuladores.add(manipulador);
+	}
+	
+	public void finish (Report report) {
+		for (Gerenciador manipula : this.manipuladores) {
+			manipula.manipulador(report);
+		}
 	}
 }

@@ -1,6 +1,6 @@
 package br.edu.insper.desagil.aula9.derp;
 
-public class ServidorOnline {
+public class ServidorOnline implements Gerenciador{
 	private Log log;
 
 	public ServidorOnline(Log log) {
@@ -12,5 +12,11 @@ public class ServidorOnline {
 		 * Imagine que aqui há um código que envia requisições para um API online.
 		 */
 		log.add("Servidor recebeu " + report.getTitle());
+	}
+
+	@Override
+	public void manipulador(Report report) {
+		// TODO Auto-generated method stub
+		notify(report);
 	}
 }

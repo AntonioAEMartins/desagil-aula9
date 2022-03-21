@@ -1,6 +1,6 @@
 package br.edu.insper.desagil.aula9.derp;
 
-public class InterfaceGrafica {
+public class InterfaceGrafica implements Gerenciador {
 	private Log log;
 
 	public InterfaceGrafica(Log log) {
@@ -12,5 +12,11 @@ public class InterfaceGrafica {
 		 * Imagine que aqui há um código que atualiza a interface gráfica.
 		 */
 		log.add("Interface mostrou " + report.getTitle());
+	}
+
+	@Override
+	public void manipulador(Report report) {
+		// TODO Auto-generated method stub
+		
 	}
 }
